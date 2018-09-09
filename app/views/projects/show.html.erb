@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+  <% @project.events.each do |event| %>
+    <%= event.start_time %>
+  <% end %>
+</p>
+
+<%= link_to "Start", new_event_path(project_id: @project.id) %>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
