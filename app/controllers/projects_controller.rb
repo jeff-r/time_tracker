@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :start_clock, :stop_clock]
 
   # GET /projects
   # GET /projects.json
@@ -59,6 +59,17 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def stop_clock
+    @project.stop_clock
+    redirect_to project_url(@project)
+  end
+
+  def start_clock
+    @project = Project.find(params[:id])
+    @project.start_clock
+    redirect_to event_url(@project.events.last)
   end
 
   private

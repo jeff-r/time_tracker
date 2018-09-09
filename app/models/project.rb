@@ -4,4 +4,10 @@ class Project < ApplicationRecord
   def start_clock
     events.create start_time: Time.now
   end
+
+  def stop_clock
+    event = events.last
+    return if event.end_time
+    event.update_attributes(end_time: Time.now)
+  end
 end

@@ -15,5 +15,12 @@
   <%= @event.end_time %>
 </p>
 
+<% if @event.end_time.nil? %>
+  <div class='stop-clock-link'>
+    <%= link_to 'Stop', stop_clock_path(@event.project_id) %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

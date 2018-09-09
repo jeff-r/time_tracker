@@ -3,12 +3,16 @@
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
+  <div class='project-events'>
   <% @project.events.each do |event| %>
+    <div class='project-event'>
     <%= event.start_time %>
+    </div>
   <% end %>
+  </div>
 </p>
 
-<%= link_to "Start", new_event_path(project_id: @project.id) %>
+<%= link_to "Start", start_clock_path(id: @project.id) %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
