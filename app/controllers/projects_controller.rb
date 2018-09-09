@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
   def start_clock
     @project = Project.find(params[:id])
     @project.start_clock
-    redirect_to event_url(@project.events.last)
+    redirect_to project_url(@project)
   end
 
   private
