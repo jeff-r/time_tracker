@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  project_id: 1
+  project: :one
   start_time: 2018-09-08 17:35:56
   end_time: 2018-09-08 17:35:56
 
 two:
-  project_id: 1
+  project: :one
   start_time: 2018-09-08 17:35:56
   end_time: 2018-09-08 17:35:56

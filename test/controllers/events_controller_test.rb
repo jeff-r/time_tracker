@@ -1,4 +1,5 @@
 require 'test_helper'
+require "pry-byebug"
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
