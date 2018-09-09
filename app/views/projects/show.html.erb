@@ -1,18 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
+<div class='project'>
+  Project: <%= @project.name %>
   <div class='project-events'>
   <% @project.events.each do |event| %>
     <div class='project-event'>
-    <%= event.start_time %>
+      <%= event.time_and_duration %>
     </div>
   <% end %>
   </div>
-</p>
+</div>
 
-<%= link_to "Start", start_clock_path(id: @project.id) %>
+<div>
+
+  <% if @project.is_running? %>
+  <div class='start-clock'>
+    <%= link_to "stop Clock", stop_clock_path(id: @project.id) %>
+  </div>
+  <% else %>
+  <div class='stop-clock'>
+    <%= link_to "Start Clock", start_clock_path(id: @project.id) %>
+  </div>
+  <% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+</div>

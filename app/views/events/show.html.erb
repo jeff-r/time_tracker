@@ -1,26 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Project:</strong>
-  <%= @event.project_id %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
-
 <% if @event.end_time.nil? %>
+  <p>
+  Started clock at: <%= @event.formatted_time %>
+  </p>
+
   <div class='stop-clock-link'>
-    <%= link_to 'Stop', stop_clock_path(@event.project_id) %>
+    <%= link_to 'Stop Clock', stop_clock_path(@event.project_id) %>
   </div>
+
+<% else %>
+  <p>
+  <%= @event.time_and_duration %>
+  </p>
+
 <% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to "Back to #{@event.project.name}", project_path(@event.project) %>
