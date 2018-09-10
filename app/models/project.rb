@@ -15,4 +15,14 @@ class Project < ApplicationRecord
     return false if events.empty?
     events.last.is_running?
   end
+
+  def self.active_project
+    event = Event.last
+    return nil if event.nil?
+    if event.is_running?
+      event.project
+    else
+      nil
+    end
+  end
 end
