@@ -11,9 +11,11 @@
       <%= link_to "Stop the clock", stop_clock_path(id: @project.id), class: "toggle-clock" %>
     </div>
   <% else %>
-    <div class='start-clock'>
-      <%= link_to "Start the clock", start_clock_path(id: @project.id), class: "toggle-clock" %>
-    </div>
+    <% unless Project.active_project %>
+      <div class='start-clock'>
+        <%= link_to "Start the clock", start_clock_path(id: @project.id), class: "toggle-clock" %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class='project-events'>
