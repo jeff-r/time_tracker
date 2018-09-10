@@ -12,6 +12,7 @@ class Project < ApplicationRecord
   end
 
   def is_running?
+    return false if events.empty?
     events.last.is_running?
   end
 end
