@@ -1,3 +1,83 @@
-// Place all the styles related to the projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* https://www.canva.com/learn/website-color-schemes/ */
+
+$base-color: #000;
+
+/* #33 */
+$terracotta: #945d60;
+$herb:       #626e60;
+$chilli:     #af473c;
+$charcoal:   #3c3c3c;
+
+/* #1 */
+$fresh:      #4abdac;
+$vermillion: #fc4a1a;
+$sunshine:   #f78733;
+$clean:      #dfdce3;
+
+$active-row: $fresh;
+$go-color:   $fresh;
+$stop-color: $vermillion;
+
+.project-title {
+  padding-bottom: 20px;
+}
+
+.project {
+  width: 300px;
+}
+
+.running {
+  font-weight: bold;
+}
+
+.start-clock {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 3em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav a:visited,
+.project a:visited {
+  background: white;
+  color: lighten($base-color, 20%);
+}
+
+.nav a:hover,
+.project a:hover {
+  background: white;
+  color: lighten($base-color, 40%);
+}
+
+a.toggle-clock:hover {
+  background: white;
+}
+
+.start-clock a.toggle-clock:hover {
+  color: darken($go-color, 10%);
+}
+
+.stop-clock a.toggle-clock:hover {
+  color: darken($stop-color, 10%);
+}
+
+.start-clock a,
+.start-clock a:visited {
+  color: $go-color;
+}
+
+.stop-clock {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 3em;
+}
+
+.stop-clock a,
+.stop-clock a:visited {
+  color: $stop-color;
+}

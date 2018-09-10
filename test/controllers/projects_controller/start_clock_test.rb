@@ -11,7 +11,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "redirects to the event page" do
+  test "redirects start clock to the event page" do
     get start_clock_url(id: @project.id)
     assert_redirected_to project_path(@project)
   end

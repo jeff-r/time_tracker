@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   end
 
   def formatted_time
-    start_time.strftime("%b %e, %l:%M %p")
+    start_time.localtime.strftime("%b %e, %l:%M %p")
   end
 
   def time_and_duration

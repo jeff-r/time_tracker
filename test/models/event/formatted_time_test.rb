@@ -6,11 +6,11 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "returns the start time in printable form" do
-    assert_equal "Sep  8,  5:00 PM", @event.formatted_time
+    assert_equal "Sep  8, 10:00 AM", @event.formatted_time
   end
 
   test "returns the time and duration" do
-    assert_equal "36 minutes: Sep  8,  5:00 PM", @event.time_and_duration
+    assert_equal "36 minutes: Sep  8, 10:00 AM", @event.time_and_duration
   end
 end
 
