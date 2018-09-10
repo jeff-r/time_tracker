@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<div class='project'>
-  <div class='project-title'>
+<% content_for :nav do %>
     <%= link_to @project.name, edit_project_path(@project) %>
-  </div>
+<% end %>
+
+<div class='project'>
 
   <% if @project.is_running? %>
     <div class='stop-clock'>
