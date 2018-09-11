@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :project
 
+  before_save :update_seconds
+
   def duration
     if is_running?
       "#{current_duration_in_minutes} minutes and counting"
@@ -27,5 +29,12 @@ class Event < ApplicationRecord
     final = is_running? ? Time.now : end_time
     seconds = (final - start_time)
     (seconds/60).to_i
+  end
+
+  private
+
+  def update_seconds
+    return if end_time.nil?
+    self.seconds = end_time - start_time
   end
 end
