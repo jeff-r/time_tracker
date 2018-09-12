@@ -4,13 +4,22 @@ one:
   project: :one
   start_time: 2018-09-08 17:00:56
   end_time: 2018-09-08 17:36:56
+  seconds: 360
 
 two:
   project: :one
   start_time: 2018-09-08 17:35:56
   end_time: 2018-09-08 17:36:56
+  seconds: 60
 
 three:
   project: :two
   start_time: 2018-09-08 17:36:56
   end_time: 2018-09-08 17:38:56
+  seconds: 120
+
+four:
+  project: :two
+  start_time: 2018-09-09 17:36:56
+  end_time: 2018-09-09 17:38:56
+  seconds: 120
