@@ -1,6 +1,10 @@
 class Project < ApplicationRecord
   has_many :events
 
+  def current_weeks_events
+    events.select { |event| event.start_time > Date.today.at_beginning_of_week}
+  end
+
   def start_clock
     events.create start_time: Time.now
   end
