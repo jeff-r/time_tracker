@@ -4,7 +4,7 @@ class Heartbeat < ActiveRecord::Migration[5.2]
       # t.string :type
       t.string :heartbeat_type
 
-      t.timestamps
+      t.timestamp :created_at
     end
   end
 end

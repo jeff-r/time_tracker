@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 2018_10_26_175712) do
 
   create_table "heartbeats", force: :cascade do |t|
     t.string "heartbeat_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
   end
 
   create_table "projects", force: :cascade do |t|
