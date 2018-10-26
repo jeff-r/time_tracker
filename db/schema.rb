@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_161330) do
+ActiveRecord::Schema.define(version: 2018_10_26_175712) do
 
   create_table "events", force: :cascade do |t|
     t.integer "project_id"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2018_09_12_161330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seconds"
+  end
+
+  create_table "heartbeats", force: :cascade do |t|
+    t.string "heartbeat_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
