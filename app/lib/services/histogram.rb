@@ -11,11 +11,20 @@ module Services
       heartbeats.each do |hearbeat|
         add_hearbeat hearbeat
       end
-      @histogram
+      with_formatted_dates
     end
 
     def bucket_times
       @histogram.keys
+    end
+
+    def with_formatted_dates
+      formatted_histogram = {}
+      bucket_times.each do |time|
+        time_string = time.localtime.strftime("%F %T")
+        formatted_histogram[time_string] = @histogram[time]
+      end
+      formatted_histogram
     end
 
     private

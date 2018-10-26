@@ -10,9 +10,11 @@ const Buckets = props => {
   );
 };
 const Bucket = props => {
+  console.log(props.time);
+  const formattedTime = new Date(props.time).toLocaleTimeString();
   return (
     <div>
-      {props.time}: {props.count}
+      {formattedTime}: {props.count}
     </div>
   );
 };
