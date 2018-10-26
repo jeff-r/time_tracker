@@ -15,7 +15,7 @@ class HeartbeatsControllerTest < ActionDispatch::IntegrationTest
 
   test "Returns the heartbeats as json" do
     heartbeat = Heartbeat.create(heartbeat_type: "mouse")
-    get heartbeats_url
+    get heartbeats_url, format: :json
     json = JSON.parse(response.body)
     assert_equal heartbeat.id, json.first["id"]
   end

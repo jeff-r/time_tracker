@@ -6,6 +6,9 @@ class HeartbeatsController < ApplicationController
 
   def index
     @heartbeats = Heartbeat.all
-    render json: @heartbeats
+    respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @heartbeats }
+      end
   end
 end
