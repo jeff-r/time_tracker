@@ -1,6 +1,10 @@
 module EventsHelper
   def formatted_duration(minutes)
-    "%.2f" % (minutes/60.0)
+    if minutes
+      "%.2f" % (minutes/60.0)
+    else
+      "none"
+    end
   end
 
   def formatted_duration_seconds(seconds)
