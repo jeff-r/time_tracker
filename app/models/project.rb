@@ -10,6 +10,10 @@ class Project < ApplicationRecord
     events.select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
   end
 
+  def recent_events
+    events.where("start_time > ? ", 3.days.ago).order("start_time desc")
+  end
+
   def start_clock
     events.create start_time: Time.now
   end

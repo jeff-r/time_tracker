@@ -28,9 +28,10 @@
 
 
   <div class='project-events'>
-    <% @project.events.each do |event| %>
+    <% @project.recent_events.each do |event| %>
       <div class="<%= event_row_class(event) %>" >
-        <%= event.start_time %>
+        <%= formatted_time(event.start_time) %>
+        (<%= formatted_duration(event.seconds/60) %> hours)
       </div>
     <% end %>
   </div>
