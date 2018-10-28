@@ -5,6 +5,11 @@ class Project < ApplicationRecord
     events.select { |event| event.start_time > Date.today.at_beginning_of_week}
   end
 
+  def event_summaries
+    select_string = "strftime('%Y-%m-%d', start_time)"
+    events.select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
+  end
+
   def start_clock
     events.create start_time: Time.now
   end

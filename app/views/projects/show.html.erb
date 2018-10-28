@@ -19,11 +19,20 @@
   <% end %>
 
   <div class='project-events'>
-  <% @project.events.each do |event| %>
-    <div class="<%= event_row_class(event) %>" >
-      <%= event.time_and_duration %>
-    </div>
-  <% end %>
+    <% @project.event_summaries.each do |summary| %>
+      <div>
+        <%= summary.date %> <%= formatted_duration(summary.total_minutes) %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class='project-events'>
+    <% @project.events.each do |event| %>
+      <div class="<%= event_row_class(event) %>" >
+        <%= event.start_time %>
+      </div>
+    <% end %>
   </div>
 
 
