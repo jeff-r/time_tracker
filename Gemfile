@@ -15,7 +15,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'rack-cors'
-gem 'd3_rails'
+gem 'chart-js-rails'
+gem 'momentjs-rails'
 gem 'webpacker'
 gem 'react-rails'
 

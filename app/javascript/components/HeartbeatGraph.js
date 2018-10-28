@@ -10,7 +10,6 @@ const Buckets = props => {
   );
 };
 const Bucket = props => {
-  console.log(props.time);
   const formattedTime = new Date(props.time).toLocaleTimeString();
   return (
     <div>
@@ -24,7 +23,11 @@ class HeartbeatGraph extends React.Component {
     super(props);
 
     this.state = {
-      heartbeats: []
+      heartbeats: [],
+      chartData: [],
+
+      chartDataX: [],
+      chartDataY: []
     };
   }
 
@@ -32,28 +35,58 @@ class HeartbeatGraph extends React.Component {
     this.hearbeatFetcher();
   }
 
+  drawChart(dataX, dataY) {
+    const data = {
+      labels: dataX,
+      series: [dataY]
+    };
+
+    new Chartist.Line("daychart", data);
+    // let ctx = document.getElementById("daychart").getContext("2d");
+    // new Chart(ctx, {
+    //   type: "bar",
+    //   data: {
+    //     labels: dataX,
+    //     datasets: [{ data: dataY }]
+    //   }
+    // });
+  }
+
   hearbeatFetcher() {
     fetch("/heartbeats.json")
       .then(result => result.json())
       .then(json => {
+        const chartData = Object.keys(json).map(key => ({
+          x: new Date(key).toLocaleTimeString(),
+          y: json[key]
+        }));
+
+        const chartDataX = Object.keys(json).map(key =>
+          new Date(key).toLocaleTimeString()
+        );
+        const chartDataY = Object.keys(json).map(key => json[key]);
+        console.log("***********************");
+        console.log(chartDataX);
+        console.log(chartDataY);
         const normalizedHeartbeats = Object.keys(json).map(key => ({
           time: key,
           count: json[key]
         }));
 
-        console.log(normalizedHeartbeats);
         this.setState({
-          heartbeats: normalizedHeartbeats
+          heartbeats: normalizedHeartbeats,
+          chartData: chartData,
+          chartdataX: chartDataX,
+          chartDataY: chartDataY
         });
       });
   }
 
   render() {
+    this.drawChart(this.state.chartDataX, this.state.chartDataY);
     return (
       <React.Fragment>
-        <div>
-          <Buckets heartbeats={this.state.heartbeats} />
-        </div>
+        <div />
       </React.Fragment>
     );
   }
