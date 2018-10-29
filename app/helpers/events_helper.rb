@@ -12,7 +12,7 @@ module EventsHelper
       "#{formatted_time(event.start_time)} - #{formatted_time(event.end_time)} ... %d minutes" % [event.seconds/60]
     else
       seconds = Time.now - event.start_time
-      "%d minutes ... running" % (seconds / 60)
+      "#{formatted_time(event.start_time)} - now ... %d minutes" % (seconds / 60)
     end
   end
 
