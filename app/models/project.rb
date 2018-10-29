@@ -17,8 +17,8 @@ class Project < ApplicationRecord
         summaries[date_string] = event.seconds/60.0
       end
     end
-    summaries = summaries.map do |key, value|
-      OpenStruct.new(date: key, total_minutes: value)
+    summaries = summaries.keys.sort { |date1, date2| date2 <=> date1 }.map do |date|
+      OpenStruct.new(date: date, total_minutes: summaries[date])
     end
     summaries
   end

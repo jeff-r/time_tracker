@@ -8,8 +8,8 @@ class ProjectTest < ActiveSupport::TestCase
 
   test "returns the summaries" do
     expected = [
-      {'2018-09-08' => 420},
-      {'2018-10-08' => 360}
+      OpenStruct.new({date: '2018-10-08', total_minutes: 6.0}),
+      OpenStruct.new({date: '2018-09-08', total_minutes: 7.0})
     ]
     assert_equal expected, @summaries
   end
