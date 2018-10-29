@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @event_summaries = @project.event_summaries
+    @recent_events = @project.recent_events
   end
 
   # GET /projects/new

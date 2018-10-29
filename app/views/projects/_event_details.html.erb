@@ -1,0 +1,24 @@
+
+<% # console %>
+
+<div class='event-summary'>
+  <div class='event-summary-row'>
+    <div class="event-summary-head">
+      <%= summary.date %>: <%= formatted_duration(summary.total_minutes) %> hours
+    </div>
+    <div class='event-summary-details'>
+      <% @recent_events.each do |event| %>
+        <% if event.start_time.strftime('%Y-%m-%d') == summary.date %>
+          <div class="<%= event_row_class(event) %>" >
+            <% if event.is_running? %>
+              <%= formatted_time(event.start_time) %>
+            <% else %>
+              <%= link_to formatted_time(event.start_time), edit_event_path(event) %>
+            <% end %>
+            (<%= formatted_duration_seconds(event.seconds) %>)
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

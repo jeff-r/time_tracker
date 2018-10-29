@@ -20,22 +20,9 @@
 
   <div class='project-events'>
     <% @project.event_summaries.each do |summary| %>
-      <div>
-        <%= summary.date %> <%= formatted_duration(summary.total_minutes) %>
-      </div>
+      <%= render partial: "event_details", locals: {summary: summary} %>
     <% end %>
   </div>
-
-
-  <div class='project-events'>
-    <% @project.recent_events.each do |event| %>
-      <div class="<%= event_row_class(event) %>" >
-        <%= formatted_time(event.start_time) %>
-        (<%= formatted_duration_seconds(event.seconds) %>)
-      </div>
-    <% end %>
-  </div>
-
 
 <div>
 

@@ -3,7 +3,7 @@ module EventsHelper
     if minutes
       "%.2f" % (minutes/60.0)
     else
-      "none"
+      "Zero"
     end
   end
 
@@ -16,6 +16,7 @@ module EventsHelper
   end
 
   def formatted_time(time)
-    time.strftime("%Y-%m-%d %I:%M")
+    # time.strftime("%Y-%m-%d %I:%M")
+    time.strftime("%I:%M")
   end
 end

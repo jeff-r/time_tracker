@@ -29,7 +29,7 @@ $stop-color: $vermillion;
 }
 
 .running {
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 .start-clock {
@@ -84,4 +84,22 @@ a.toggle-clock:hover {
 
 .project-events {
   padding-bottom: 20px;
+}
+
+.event-summary {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: solid 1px #eee;
+}
+
+.event-summary-head {
+  font-weight: bold;
+}
+
+.event-summary-row {
+  display: flex;
+}
+
+.event-summary-details {
+  padding-left: 2em;
 }

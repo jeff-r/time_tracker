@@ -7,7 +7,8 @@ class Project < ApplicationRecord
 
   def event_summaries
     select_string = "strftime('%Y-%m-%d', start_time)"
-    events.where("start_time > ?", Date.today.at_beginning_of_week).select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
+    # events.where("start_time > ?", Date.today.at_beginning_of_week).select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
+    events.select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
   end
 
   def recent_events
