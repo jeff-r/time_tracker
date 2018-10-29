@@ -7,16 +7,16 @@ module EventsHelper
     end
   end
 
-  def formatted_duration_seconds(seconds)
-    if seconds
-      "%.2f hours" % (seconds/3600.0)
+  def formatted_duration_event(event)
+    if event.seconds
+      "%.2f hours" % (event.seconds/3600.0)
     else
-      "running"
+      seconds = Time.now - event.start_time
+      "%.2f - running" % (seconds / 3600.0)
     end
   end
 
   def formatted_time(time)
-    # time.strftime("%Y-%m-%d %I:%M")
     time.strftime("%I:%M")
   end
 end

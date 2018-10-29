@@ -15,7 +15,7 @@
             <% else %>
               <%= link_to formatted_time(event.start_time), edit_event_path(event) %>
             <% end %>
-            (<%= formatted_duration_seconds(event.seconds) %>)
+            (<%= formatted_duration_event(event) %>)
           </div>
         <% end %>
       <% end %>
