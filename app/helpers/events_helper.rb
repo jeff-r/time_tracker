@@ -9,10 +9,10 @@ module EventsHelper
 
   def formatted_duration(event)
     if event.seconds
-      "#{formatted_time(event.start_time)} - #{formatted_time(event.end_time)} ... %d minutes, %.2f hours" % [event.seconds/60, event.seconds/3600.0]
+      "#{formatted_time(event.start_time)} - #{formatted_time(event.end_time)} ... %d minutes" % [event.seconds/60]
     else
       seconds = Time.now - event.start_time
-      "%.2f hours ... running" % (seconds / 3600.0)
+      "%d minutes ... running" % (seconds / 60)
     end
   end
 
