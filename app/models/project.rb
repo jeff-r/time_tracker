@@ -10,6 +10,7 @@ class Project < ApplicationRecord
     summaries = {}
     events.each do |event|
       next if event.end_time.nil?
+      next if event.seconds.nil?
       date_string = event.start_time.strftime("%Y-%m-%d")
       if summaries[date_string]
         summaries[date_string] += event.seconds/60.0
