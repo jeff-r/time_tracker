@@ -2,13 +2,25 @@ class Project < ApplicationRecord
   has_many :events
 
   def current_weeks_events
-    events.select { |event| event.start_time > Date.today.at_beginning_of_week}
+    # events.select { |event| event.start_time > Date.today.at_beginning_of_week}
+    events
   end
 
   def event_summaries
-    select_string = "strftime('%Y-%m-%d', start_time)"
-    # events.where("start_time > ?", Date.today.at_beginning_of_week).select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
-    events.select("#{select_string} as date", "sum(seconds)/60 as total_minutes").group("date").order("date desc")
+    summaries = {}
+    events.each do |event|
+      next if event.end_time.nil?
+      date_string = event.start_time.strftime("%Y-%m-%d")
+      if summaries[date_string]
+        summaries[date_string] += event.seconds/60.0
+      else
+        summaries[date_string] = event.seconds/60.0
+      end
+    end
+    summaries = summaries.map do |key, value|
+      OpenStruct.new(date: key, total_minutes: value)
+    end
+    summaries
   end
 
   def recent_events
