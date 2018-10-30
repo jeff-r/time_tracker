@@ -1,4 +1,6 @@
 class HeartbeatsController < ApplicationController
+  before_action :authenticate_user!
+
   def heartbeat_mouse
     Heartbeat.create(heartbeat_type: "mouse")
     render json: "OK"

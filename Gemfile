@@ -19,6 +19,7 @@ gem 'chart-js-rails'
 gem 'momentjs-rails'
 gem 'webpacker'
 gem 'react-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
