@@ -25,7 +25,7 @@ class Project < ApplicationRecord
   end
 
   def recent_events
-    events.where("start_time > ? ", 3.days.ago).order("start_time desc")
+    events.where("start_time > ? ", 3.weeks.ago).order("start_time desc")
   end
 
   def start_clock
